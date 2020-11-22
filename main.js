@@ -61,13 +61,9 @@ const setTempBlock = ()=>{
     for(i=0;i<=18-topOff;i++){
      tempTopOff=topOff+i;
      if(!checkifPossible(currentBlock,i,0)){
-         console.log("in");
          break
-     }
-        
- }
- console.log(topOff,tempTopOff,i);
- 
+        }      
+    } 
 }
 
 const updateGrid=()=>{

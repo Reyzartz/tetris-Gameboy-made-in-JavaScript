@@ -52,13 +52,10 @@ const setRandomiser = () => {
     
     currentBlock=[...nextBlocks[0][0]]
     currentBlockType = nextBlocks[0][1]
-    nextBlocks.shift()
-    console.log(nextBlocks);
-    
+    nextBlocks.shift()    
 }
 const RandomiserInit = () =>{
     nextBlocks = []
     shuffle(BlocksArray,true)
     nextBlocks.push(...BlocksArray)
-    console.log(nextBlocks);
 }

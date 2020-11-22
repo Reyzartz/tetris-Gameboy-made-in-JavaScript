@@ -1,16 +1,24 @@
 let i_img,j_img,l_img,o_img,s_img,t_img,z_img;
 let x_Off=1,y_off=2
 let gameStart = false;
-let musicPlay = false;
+let themeSongPlay = false;
+let gameOver=false
+let boxSide = null;
+let themeSong;
+
+function preload(){
+  loadAudio()
+}
+
 function setup() {
     createCanvas(windowHeight*(10/9),windowHeight)
     boxSide = floor(windowHeight/18)
     px = boxSide/8
     RandomiserInit()
-    import_images();
+    import_images()
     load_Font();
-    loadAudio();
     setRandomiser()
+    playPauseMusic()
     setBLock()
     clearGrid()
     setStaticBlocks()
@@ -19,12 +27,10 @@ function setup() {
     setColors();
     noStroke(40)
 }
-gameOver=false
-boxSide = null;
+
 function draw() { 
   
   background(black)
-  playAudio()
   if(gameStart){
     
     display_grid()
@@ -56,12 +62,6 @@ function titleScreen(){
     pop()
   pop()
 }
-async function playAudio(){
-  if(!musicPlay){
-    await music.loop()
-    musicPlay = true;
-  }
-}
 function import_images(){
   i_img = loadImage('./assets/i.png')
   j_img = loadImage('./assets/j.png')
@@ -77,11 +77,25 @@ function import_images(){
 
 
 function loadAudio(){
-  music = loadSound('./assets/theme.mp3');
+  themeSong = loadSound('./assets/theme.mp3');
 }
+
+function playPauseMusic(){
+  if(!themeSongPlay){
+    themeSong.loop();
+  }
+  else{
+    themeSong.pause();
+  }
+ 
+  themeSong.setVolume(0.04);
+  themeSongPlay = !themeSongPlay;
+}
+
 function display_next_set_of_block(){
   display_block(nextBlocks[0][0],15*boxSide,14*boxSide,nextBlocks[0][1])
 }
+
 function display_hold_block(){
   fill(0)
   rect(boxSide,2*boxSide,5*boxSide,4*boxSide)

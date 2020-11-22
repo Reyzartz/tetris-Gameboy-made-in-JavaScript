@@ -35,7 +35,7 @@ function display_score(){
     fill(black);
     textFont(RetroFont);
     textSize(px*8);
-    textAlign(RIGHT,LEFT);
+    textAlign(RIGHT);
     text(score, px*153, px*31);
     text(level, px*145, px*63);
     text(lines, px*145, px*87);
